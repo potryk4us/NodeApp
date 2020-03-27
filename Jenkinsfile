@@ -30,4 +30,8 @@ node {
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }
+
+    stage('Run Docker image') {
+	sh 'docker stop my-app; docker rm my-app; docker run -p 80:8080 -d --name my-app potryk4us/my-app:2.0.0'
+    }
 }
